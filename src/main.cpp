@@ -8,7 +8,7 @@ SDL_Window *window;
 SDL_Renderer *renderer;
 
 
-double delta;
+double delta = 1/MAXFPS;
 Uint64 time_last_frame;
 
 int main(int argc, char *argv[]){
@@ -48,7 +48,7 @@ int main(int argc, char *argv[]){
 
         delta = (SDL_GetTicks() - time_last_frame)/1000.;
 
-        if (1./delta < MAXFPS){
+        if (1./delta <= MAXFPS){
             time_last_frame = SDL_GetTicks();
             update(window, renderer, event);
 
